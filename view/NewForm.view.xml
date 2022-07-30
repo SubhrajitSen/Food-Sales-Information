@@ -1,0 +1,137 @@
+<mvc:View xmlns:semantic="sap.f.semantic" controllerName="project1.controller.NewForm" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:uxap="sap.uxap" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:hover="project1.controller.DetailPage"
+	xmlns:customdata="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar">
+	<uxap:ObjectPageLayout id="idDCDPageObjectLayoutOVP" showAnchorBar="true" upperCaseAnchorBar="false" alwaysShowContentHeader="true"
+		preserveHeaderStateOnScroll="true" headerContentPinnable="true" isChildPage="true" enableLazyLoading="true" >
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle id="idDCDPageObjectHeaderOVP">
+				<uxap:expandedHeading>
+					<FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<Title id="ObjectHeaderTitleOVP" wrapping="true" class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+					</FlexBox>
+				</uxap:expandedHeading>
+				<uxap:snappedHeading>
+					<FlexBox wrap="Wrap" fitContainer="true" alignItems="Center" >
+						<Title id="ObjectHeaderTitleSnappedOVP" wrapping="true" class="sapUiTinyMarginEnd sapUiTinyMarginTop"/>
+					</FlexBox>
+				</uxap:snappedHeading>
+				<uxap:actions>
+                
+				 <uxap:ObjectPageHeaderActionButton icon="sap-icon://edit"  id="edit" press=" handleEditPress" enabled="true"/>
+                 <uxap:ObjectPageHeaderActionButton icon="sap-icon://save" id="save" visible="false"  press="handleSave" enabled="true"/>
+                  <uxap:ObjectPageHeaderActionButton icon="sap-icon://decline" id="cancel" visible="false"  press="handleCancel" enabled="true"/>
+                    <uxap:ObjectPageHeaderActionButton icon="sap-icon://nav-back" text="Back to Home Page"  press="onPreviousPage"/>
+				
+                </uxap:actions>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+		<uxap:headerContent >
+			<HBox id="idDCDPage2GridLayoutovp" wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar displaySize="M" displayShape="Circle" src="sap-icon://employee" class="sapUiSmallMarginEnd"></f:Avatar>
+				<VBox class="sapUiLargeMarginEnd">
+					<ObjectAttribute title="City" id="City" text="{/City}" />
+					
+				</VBox>
+			
+			</HBox>
+		</uxap:headerContent>
+		<uxap:sections>
+			<uxap:ObjectPageSection id="EmployeeDetails" title="Sales Details" showTitle="true" titleUppercase="false">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="idOverviewSectionSS1">
+						<VBox>
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="4" columnsL="4" columnsM="4"
+								singleContainerFullSize="false">
+								<form:content>
+									<core:Title text="Sales Details"/>
+									<Label text="Order Date"/>
+									<DatePicker value="{/HireDate}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}" />
+									<Label text="Region"/>
+									<Input value="{/Region}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<core:Title text=""/>
+									
+									<Label text="Quantity"/>
+									<Input value="{/Quantity}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<Label text="Category"/>
+									<Input value="{/Category}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									
+								</form:content>
+							</form:SimpleForm>
+						</VBox>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			
+			<uxap:ObjectPageSection id="idCClausesSection" title="Price Details" showTitle="true" titleUppercase="false">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="idCClausesSectionSS1">
+						<VBox>
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="4" columnsL="4" columnsM="4"
+								singleContainerFullSize="false">
+								<form:content>
+									<core:Title text=""/>
+									<Label text="Unit Price"/>
+									<Input value="{/UnitPrice}"  maxLength="4" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<Label text="Total Price"/>
+									<Input value="{/TotalPrice}" maxLength="6" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									
+								</form:content>
+							</form:SimpleForm>
+						</VBox>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			
+		
+			
+		
+			
+			
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
+</mvc:View>
+						</VBox>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			
+			<uxap:ObjectPageSection id="idCClausesSection" title="Personal Information" showTitle="true" titleUppercase="false">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="idCClausesSectionSS1">
+						<VBox>
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="4" columnsL="4" columnsM="4"
+								singleContainerFullSize="false">
+								<form:content>
+									<core:Title text=""/>
+									<Label text="City"/>
+									<Input value="{/City}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<Label text="Birth Date"/>
+									<DatePicker value="{/BirthDate}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<Label text="Address"/>
+									<TextArea value="{/Address}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<core:Title text=""/>
+									<Label text="Postal Code"/>
+									<Input value="{/PostalCode}" type="Number" maxLength="6" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<Label text="Country"/>
+									<Input value="{/Country}" editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+									<Label text="Home Phone"/>
+									<Input value="{/HomePhone}"  editable="{=${AppCreateModel>/settingEdit} === true ? true : false}"/>
+								</form:content>
+							</form:SimpleForm>
+						</VBox>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			
+		
+			
+		
+			
+			
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
+</mvc:View>

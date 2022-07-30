@@ -1,0 +1,156 @@
+<mvc:View controllerName="foodsalesproject.controller.DetailPage"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"  xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    xmlns:l="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:viz="sap.viz.ui5.controls"
+	xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:vizData="sap.viz.ui5.data"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">>
+      <tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2"
+					type="Transparent" press="onCollapseExpandPress">
+                   
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow" />
+					</layoutData>
+				</Button>
+				<ToolbarSpacer width="20px" />
+				<ToolbarSpacer />
+				
+				<Text  wrapping="false">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Disappear" />
+					</layoutData>
+				</Text>
+				<ToolbarSpacer />
+			
+			</tnt:ToolHeader>
+		</tnt:header>
+        <tnt:sideContent>
+			<tnt:SideNavigation id="sideNavigation" expanded="true"
+				selectedItem="Dashboard">
+				<tnt:NavigationList>
+                  <tnt:NavigationListItem text="Simple Table" hasExpander="false" select="onTable" icon="sap-icon://table-view"/>
+				
+                  
+				</tnt:NavigationList>
+            
+				
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+            <tnt:mainContents>
+			<NavContainer id="navCon">
+              <Page id="Table" title="{i18n>Table}">
+                <content>
+        <l:VerticalLayout width="100%">
+				<fb:FilterBar showClearOnFB="true"  id="labelManagementFilter" clear="onClear" reset="onReset"
+					search="onSearch" filterBarExpanded="false" useToolbar="false" showRestoreButton="true" showClearButton="false">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem  id="FilterforCity" groupName="__$FILTER$" name="City" label="City" partOfCurrentVariant="true"
+							visibleInFilterBar="true">
+							<fb:control>
+								<ComboBox id="City">
+									<items>
+										<core:Item id="CityClass" key="{localModel>City}" text="{localModel>City}"/>
+									</items>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem id="FilterforUnitPrice" groupName="__$FILTER$" name="Unit Price" label="Unit Price" labelTooltip="Language"
+							partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<ComboBox id="UnitPrice">
+									<items>
+										<core:Item  id="UnitPriceClass" key="{localModel>UnitPrice}" text="{localModel>UnitPrice}"/>
+									</items>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+                        <fb:FilterGroupItem id="FilterforRegion" groupName="__$FILTER$" name="Region" label="Region" labelTooltip="Language"
+							partOfCurrentVariant="true" visibleInFilterBar="false">
+							<fb:control>
+								<ComboBox id="Region">
+									<items>
+										<core:Item  id="RegionClass" key="{localModel>Region}" text="{localModel>Region}"/>
+									</items>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+			</l:VerticalLayout>
+          <!-- <smartTable:SmartTable id="smartidFilterBar2"  smartFilterId="smartFilterBar"  
+				placeToolbarInTable="true" useVariantManagement="true" 
+				 showFullScreenButton="true" 
+				demandPopin="true"  class="sapUiSmallMarginTop" tableType="ResponsiveTable" useExportToExcel="true"
+				useTablePersonalisation="true"  showRowCount="true" enableAutoBinding="true" beforeExport="onBeforeExport">
+				<smartTable:customToolbar>
+					<OverflowToolbar design="Transparent">
+						<ToolbarSpacer/>
+                        <Button text="Delete" press="onCancel" />
+                        <Button text="Add" press="onAdd"/>
+					</OverflowToolbar>
+				</smartTable:customToolbar> -->
+                <Table id="tableID2"  growingThreshold="15" alternateRowColors="true"  growing="true" mode="SingleSelectLeft" class="sapUiSizeCompact" sticky="ColumnHeaders,HeaderToolbar" selectionChange="onRadioButton">
+                <columns>
+                       <Column visible="true">
+                    <customData>
+								<core:CustomData key="p13nData"
+									value='\{"sortProperty": "EmployeeID", "type": "string", "filterProperty": "EmployeeID", "columnKey": "EmployeeID", "leadingProperty": "EmployeeID"}'/>
+							</customData>
+                        <Text  text="Order Date" />
+                    </Column>
+                    <Column visible="true">
+                        <Text  text="Region" />
+                    </Column>
+                    <Column visible="true">
+                        <Text  text="City" />
+                    </Column>
+                    <Column visible="true">
+                        <Text  text="Product" />
+                    </Column>
+                   <Column visible="true">
+                        <Text  text="Quantity" />
+                    </Column>
+                    <Column visible="true">
+                        <Text  text="Unit Price" />
+                    </Column>
+                     <Column visible="true">
+                        <Text  text="Total Price" />
+                    </Column>
+                    <Column visible="true">
+                        <Text  text="Category" />
+                    </Column>
+                </columns>
+                <items>
+              
+                    <ColumnListItem  id="ValueID2"  type="Navigation" visible="true">
+                        <Text text="{/OrderDate}"/> 
+                        <Text text="{/Region}"/>
+                        <Text text="{/City}"/>
+                        <Text text="{/Product}"/>
+                        <Text text="{/Quantity}"/>
+                        <Text text="{/UnitPrice}"/>
+                        <Text text="{/TotalPrice}"/>
+                        <Text text="{/Category}"/>
+                       
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <!-- </smartTable:SmartTable> -->
+        </content>
+    </Page>
+    </NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>
